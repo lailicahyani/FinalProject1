@@ -92,6 +92,21 @@ public class TaskDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public int updateTask(Task task){
+        SQLiteDatabase sqLiteDatabase=getWritableDatabase();
+
+        ContentValues values=new ContentValues();
+        values.put(KEY_TITLE , task.getTitle());
+        values.put(KEY_IS_DONE , task.isDone());
+
+        //update() returns the number of rows effected
+        int result=sqLiteDatabase.update(TABLE_TASK_NAME , values , "id = ?" ,
+                new String[]{String.valueOf(task.getId())});
+
+        sqLiteDatabase.close();
+        return result;
+    }
+
     public int deleteTask(Task task){
         SQLiteDatabase sqLiteDatabase=getWritableDatabase();
 

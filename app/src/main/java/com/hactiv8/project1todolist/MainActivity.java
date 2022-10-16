@@ -15,7 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements com.hactiv8.project1todolist.AddTaskDialog.SaveTaskCallBack {
+public class MainActivity extends AppCompatActivity implements AddTaskDialog.SaveTaskCallBack, EditTaskDialog.SaveEditCallBack {
 
     private TaskDao taskDao;
     private TaskAdapter adapter;
@@ -36,13 +36,16 @@ public class MainActivity extends AppCompatActivity implements com.hactiv8.proje
         adapter=new TaskAdapter(allTasks, new TaskAdapter.TaskItemEventListener() {
             @Override
             public void onItemLongPressed(Task task) {
-
+                EditTaskDialog editTaskDialog=EditTaskDialog.newInstance(task);
+                editTaskDialog.show(getSupportFragmentManager() , null);
             }
 
             @Override
             public void onCheckBoxClicked(Task task) {
                 task.setDone(!task.isDone());
+                int result=taskDao.update(task);
             }
+
             @Override
             public void onDeleteButtonClicked(Task task) {
                 int result=taskDao.delete(task);
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements com.hactiv8.proje
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                com.hactiv8.project1todolist.AddTaskDialog addTaskDialog =new com.hactiv8.project1todolist.AddTaskDialog();
+                AddTaskDialog addTaskDialog =new com.hactiv8.project1todolist.AddTaskDialog();
                 addTaskDialog.show(getSupportFragmentManager() , null);
             }
         });
@@ -108,6 +111,17 @@ public class MainActivity extends AppCompatActivity implements com.hactiv8.proje
         else {
             Log.e(TAG, "add Error" );
         }
+    }
+    @Override
+    public void onSaveEditCallBack(Task task) {
+        int result=taskDao.update(task);
 
+        if (result>0)
+        {
+            adapter.editTask(task);
+        }
+        else {
+            Log.e(TAG, "Edit Error" );
+        }
     }
 }

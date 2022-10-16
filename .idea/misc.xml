@@ -11,6 +11,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/background_item_task.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/ic_delete_24dp.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/ic_outline_edit_24.xml" value="0.182" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/ic_plus_24dp.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/ic_search_24dp.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/drawable/ic_sharp_event_note_24.xml" value="0.167" />
@@ -18,7 +19,8 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/layout/activity_splash_screen.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/layout/add_dialog.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/layout/item_task.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/layout/edit_dialog.xml" value="0.18" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Project1ToDoList/app/src/main/res/layout/item_task.xml" value="1.1" />
       </map>
     </option>
   </component>

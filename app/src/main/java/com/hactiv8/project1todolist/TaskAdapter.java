@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
@@ -44,11 +46,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
         CheckBox chbTask;
         ImageView imgRemove;
+        ImageView iconEdit;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             chbTask=itemView.findViewById(R.id.chb_taskItem_task);
             imgRemove=itemView.findViewById(R.id.img_taskItem_remove);
+            iconEdit=itemView.findViewById(R.id.img_edit);
         }
 
         public void bindItem(int i){
@@ -93,6 +97,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     return false;
                 }
             });
+            iconEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    eventListener.onItemLongPressed(tasks.get(i));
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    eventListener.onItemLongPressed(tasks.get(i));
+                    return false;
+                }
+            });
         }
 
     }
@@ -107,6 +124,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public void addTask(Task task){
         tasks.add(task);
         notifyItemInserted(tasks.size()-1);
+    }
+
+    public void editTask(Task task){
+        int pos=-1;
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getId()==task.getId())
+            {
+                pos=i;
+                break;
+            }
+        }
+
+        if (pos>-1)
+        {
+            tasks.set(pos , task);
+        }
+
+        notifyItemChanged(pos);
     }
 
     public void deleteTask(Task task)

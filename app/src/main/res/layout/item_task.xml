@@ -17,7 +17,14 @@
         android:textSize="20sp"
         android:text="test" />
 
-        <ImageView
+    <ImageView
+        android:id="@+id/img_edit"
+        android:layout_width="82dp"
+        android:layout_height="24dp"
+        android:layout_gravity="end|center_vertical"
+        android:src="@drawable/ic_outline_edit_24" />
+
+    <ImageView
         android:id="@+id/img_taskItem_remove"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
